@@ -13,10 +13,11 @@ jobs:
         with:
           python-version: "3.9"
       - name: Install dependencies
-        run: pip install openai
+        run: pip install openai PyGithub
       - name: Run AI Review
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "Running AI Review..."
-          python .github/scripts/review_pr.py
+          python review_pr.py
